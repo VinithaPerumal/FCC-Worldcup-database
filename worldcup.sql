@@ -49,12 +49,12 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.games (
     game_id integer NOT NULL,
+    year integer NOT NULL,
+    round character varying(255) NOT NULL,
     winner_id integer NOT NULL,
     opponent_id integer NOT NULL,
-    opponent_goals integer NOT NULL,
     winner_goals integer NOT NULL,
-    year integer NOT NULL,
-    round character varying(255) NOT NULL
+    opponent_goals integer NOT NULL
 );
 
 
@@ -88,7 +88,7 @@ ALTER SEQUENCE public.games_game_id_seq OWNED BY public.games.game_id;
 
 CREATE TABLE public.teams (
     team_id integer NOT NULL,
-    name character varying(255)
+    name character varying(255) NOT NULL
 );
 
 
@@ -134,166 +134,38 @@ ALTER TABLE ONLY public.teams ALTER COLUMN team_id SET DEFAULT nextval('public.t
 -- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.games VALUES (1, 1, 2, 2, 4, 2018, 'Final');
-INSERT INTO public.games VALUES (2, 3, 4, 0, 2, 2018, 'Third Place');
-INSERT INTO public.games VALUES (3, 2, 4, 1, 2, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (4, 1, 3, 0, 1, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (5, 2, 5, 2, 3, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (6, 4, 6, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (7, 3, 7, 1, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (8, 1, 8, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (9, 4, 9, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (10, 6, 10, 0, 1, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (11, 3, 11, 2, 3, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (12, 7, 12, 0, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (13, 2, 13, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (14, 5, 14, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (15, 8, 15, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (16, 1, 16, 3, 4, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (17, 17, 16, 0, 1, 2014, 'Final');
-INSERT INTO public.games VALUES (18, 18, 7, 0, 3, 2014, 'Third Place');
-INSERT INTO public.games VALUES (19, 16, 18, 0, 1, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (20, 17, 7, 1, 7, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (21, 18, 19, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (22, 16, 3, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (23, 7, 9, 1, 2, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (24, 17, 1, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (25, 7, 20, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (26, 9, 8, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (27, 1, 21, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (28, 17, 22, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (29, 18, 12, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (30, 19, 23, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (31, 16, 10, 0, 1, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (32, 3, 24, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (33, 1, 2, 2, 4, 2018, 'Final');
-INSERT INTO public.games VALUES (34, 3, 4, 0, 2, 2018, 'Third Place');
-INSERT INTO public.games VALUES (35, 2, 4, 1, 2, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (36, 1, 3, 0, 1, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (37, 2, 5, 2, 3, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (38, 4, 6, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (39, 3, 7, 1, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (40, 1, 8, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (41, 4, 9, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (42, 6, 10, 0, 1, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (43, 3, 11, 2, 3, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (44, 7, 12, 0, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (45, 2, 13, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (46, 5, 14, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (47, 8, 15, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (48, 1, 16, 3, 4, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (49, 17, 16, 0, 1, 2014, 'Final');
-INSERT INTO public.games VALUES (50, 18, 7, 0, 3, 2014, 'Third Place');
-INSERT INTO public.games VALUES (51, 16, 18, 0, 1, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (52, 17, 7, 1, 7, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (53, 18, 19, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (54, 16, 3, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (55, 7, 9, 1, 2, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (56, 17, 1, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (57, 7, 20, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (58, 9, 8, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (59, 1, 21, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (60, 17, 22, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (61, 18, 12, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (62, 19, 23, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (63, 16, 10, 0, 1, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (64, 3, 24, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (65, 1, 2, 2, 4, 2018, 'Final');
-INSERT INTO public.games VALUES (66, 3, 4, 0, 2, 2018, 'Third Place');
-INSERT INTO public.games VALUES (67, 2, 4, 1, 2, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (68, 1, 3, 0, 1, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (69, 2, 5, 2, 3, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (70, 4, 6, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (71, 3, 7, 1, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (72, 1, 8, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (73, 4, 9, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (74, 6, 10, 0, 1, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (75, 3, 11, 2, 3, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (76, 7, 12, 0, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (77, 2, 13, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (78, 5, 14, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (79, 8, 15, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (80, 1, 16, 3, 4, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (81, 17, 16, 0, 1, 2014, 'Final');
-INSERT INTO public.games VALUES (82, 18, 7, 0, 3, 2014, 'Third Place');
-INSERT INTO public.games VALUES (83, 16, 18, 0, 1, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (84, 17, 7, 1, 7, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (85, 18, 19, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (86, 16, 3, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (87, 7, 9, 1, 2, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (88, 17, 1, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (89, 7, 20, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (90, 9, 8, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (91, 1, 21, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (92, 17, 22, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (93, 18, 12, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (94, 19, 23, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (95, 16, 10, 0, 1, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (96, 3, 24, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (97, 1, 2, 2, 4, 2018, 'Final');
-INSERT INTO public.games VALUES (98, 3, 4, 0, 2, 2018, 'Third Place');
-INSERT INTO public.games VALUES (99, 2, 4, 1, 2, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (100, 1, 3, 0, 1, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (101, 2, 5, 2, 3, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (102, 4, 6, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (103, 3, 7, 1, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (104, 1, 8, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (105, 4, 9, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (106, 6, 10, 0, 1, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (107, 3, 11, 2, 3, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (108, 7, 12, 0, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (109, 2, 13, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (110, 5, 14, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (111, 8, 15, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (112, 1, 16, 3, 4, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (113, 17, 16, 0, 1, 2014, 'Final');
-INSERT INTO public.games VALUES (114, 18, 7, 0, 3, 2014, 'Third Place');
-INSERT INTO public.games VALUES (115, 16, 18, 0, 1, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (116, 17, 7, 1, 7, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (117, 18, 19, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (118, 16, 3, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (119, 7, 9, 1, 2, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (120, 17, 1, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (121, 7, 20, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (122, 9, 8, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (123, 1, 21, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (124, 17, 22, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (125, 18, 12, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (126, 19, 23, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (127, 16, 10, 0, 1, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (128, 3, 24, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (129, 1, 2, 2, 4, 2018, 'Final');
-INSERT INTO public.games VALUES (130, 3, 4, 0, 2, 2018, 'Third Place');
-INSERT INTO public.games VALUES (131, 2, 4, 1, 2, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (132, 1, 3, 0, 1, 2018, 'Semi-Final');
-INSERT INTO public.games VALUES (133, 2, 5, 2, 3, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (134, 4, 6, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (135, 3, 7, 1, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (136, 1, 8, 0, 2, 2018, 'Quarter-Final');
-INSERT INTO public.games VALUES (137, 4, 9, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (138, 6, 10, 0, 1, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (139, 3, 11, 2, 3, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (140, 7, 12, 0, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (141, 2, 13, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (142, 5, 14, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (143, 8, 15, 1, 2, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (144, 1, 16, 3, 4, 2018, 'Eighth-Final');
-INSERT INTO public.games VALUES (145, 17, 16, 0, 1, 2014, 'Final');
-INSERT INTO public.games VALUES (146, 18, 7, 0, 3, 2014, 'Third Place');
-INSERT INTO public.games VALUES (147, 16, 18, 0, 1, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (148, 17, 7, 1, 7, 2014, 'Semi-Final');
-INSERT INTO public.games VALUES (149, 18, 19, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (150, 16, 3, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (151, 7, 9, 1, 2, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (152, 17, 1, 0, 1, 2014, 'Quarter-Final');
-INSERT INTO public.games VALUES (153, 7, 20, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (154, 9, 8, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (155, 1, 21, 0, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (156, 17, 22, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (157, 18, 12, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (158, 19, 23, 1, 2, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (159, 16, 10, 0, 1, 2014, 'Eighth-Final');
-INSERT INTO public.games VALUES (160, 3, 24, 1, 2, 2014, 'Eighth-Final');
+INSERT INTO public.games VALUES (1, 2018, 'Final', 1, 2, 4, 2);
+INSERT INTO public.games VALUES (2, 2018, 'Third Place', 3, 4, 2, 0);
+INSERT INTO public.games VALUES (3, 2018, 'Semi-Final', 2, 4, 2, 1);
+INSERT INTO public.games VALUES (4, 2018, 'Semi-Final', 1, 3, 1, 0);
+INSERT INTO public.games VALUES (5, 2018, 'Quarter-Final', 2, 5, 3, 2);
+INSERT INTO public.games VALUES (6, 2018, 'Quarter-Final', 4, 6, 2, 0);
+INSERT INTO public.games VALUES (7, 2018, 'Quarter-Final', 3, 7, 2, 1);
+INSERT INTO public.games VALUES (8, 2018, 'Quarter-Final', 1, 8, 2, 0);
+INSERT INTO public.games VALUES (9, 2018, 'Eighth-Final', 4, 9, 2, 1);
+INSERT INTO public.games VALUES (10, 2018, 'Eighth-Final', 6, 10, 1, 0);
+INSERT INTO public.games VALUES (11, 2018, 'Eighth-Final', 3, 11, 3, 2);
+INSERT INTO public.games VALUES (12, 2018, 'Eighth-Final', 7, 12, 2, 0);
+INSERT INTO public.games VALUES (13, 2018, 'Eighth-Final', 2, 13, 2, 1);
+INSERT INTO public.games VALUES (14, 2018, 'Eighth-Final', 5, 14, 2, 1);
+INSERT INTO public.games VALUES (15, 2018, 'Eighth-Final', 8, 15, 2, 1);
+INSERT INTO public.games VALUES (16, 2018, 'Eighth-Final', 1, 16, 4, 3);
+INSERT INTO public.games VALUES (17, 2014, 'Final', 17, 16, 1, 0);
+INSERT INTO public.games VALUES (18, 2014, 'Third Place', 18, 7, 3, 0);
+INSERT INTO public.games VALUES (19, 2014, 'Semi-Final', 16, 18, 1, 0);
+INSERT INTO public.games VALUES (20, 2014, 'Semi-Final', 17, 7, 7, 1);
+INSERT INTO public.games VALUES (21, 2014, 'Quarter-Final', 18, 19, 1, 0);
+INSERT INTO public.games VALUES (22, 2014, 'Quarter-Final', 16, 3, 1, 0);
+INSERT INTO public.games VALUES (23, 2014, 'Quarter-Final', 7, 9, 2, 1);
+INSERT INTO public.games VALUES (24, 2014, 'Quarter-Final', 17, 1, 1, 0);
+INSERT INTO public.games VALUES (25, 2014, 'Eighth-Final', 7, 20, 2, 1);
+INSERT INTO public.games VALUES (26, 2014, 'Eighth-Final', 9, 8, 2, 0);
+INSERT INTO public.games VALUES (27, 2014, 'Eighth-Final', 1, 21, 2, 0);
+INSERT INTO public.games VALUES (28, 2014, 'Eighth-Final', 17, 22, 2, 1);
+INSERT INTO public.games VALUES (29, 2014, 'Eighth-Final', 18, 12, 2, 1);
+INSERT INTO public.games VALUES (30, 2014, 'Eighth-Final', 19, 23, 2, 1);
+INSERT INTO public.games VALUES (31, 2014, 'Eighth-Final', 16, 10, 1, 0);
+INSERT INTO public.games VALUES (32, 2014, 'Eighth-Final', 3, 24, 2, 1);
 
 
 --
@@ -330,7 +202,7 @@ INSERT INTO public.teams VALUES (24, 'United States');
 -- Name: games_game_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.games_game_id_seq', 160, true);
+SELECT pg_catalog.setval('public.games_game_id_seq', 32, true);
 
 
 --
@@ -365,22 +237,23 @@ ALTER TABLE ONLY public.teams
 
 
 --
--- Name: games fk_games_opponent; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
+-- Name: games games_opponent_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.games
-    ADD CONSTRAINT fk_games_opponent FOREIGN KEY (opponent_id) REFERENCES public.teams(team_id);
+    ADD CONSTRAINT games_opponent_id_fkey FOREIGN KEY (opponent_id) REFERENCES public.teams(team_id);
 
 
 --
--- Name: games fk_games_winner; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
+-- Name: games games_winner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.games
-    ADD CONSTRAINT fk_games_winner FOREIGN KEY (winner_id) REFERENCES public.teams(team_id);
+    ADD CONSTRAINT games_winner_id_fkey FOREIGN KEY (winner_id) REFERENCES public.teams(team_id);
 
 
 --
 -- PostgreSQL database dump complete
 --
+
 
